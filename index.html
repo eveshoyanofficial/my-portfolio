@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akinlade Eveshoyan | Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.ico" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+      .skill-bar {
+        height: 8px;
+        background-color: #e2e8f0;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .skill-progress {
+        height: 100%;
+        background-color: #04AA71;
+        border-radius: 4px;
+        transition: width 1s ease-in-out;
+      }
+      .project-filter button.active {
+        background-color: #04AA71;
+        color: white;
+      }
+      .floating-animation {
+        animation: float 6s ease-in-out infinite;
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+    </style>
+  </head>
+
+  <body class="bg-white text-[#0C503E] font-inter">
+    <!-- Navbar -->
+    <header
+      class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50 top-0"
+    >
+      <nav
+        class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4"
+      >
+        <h1 class="text-2xl font-bold text-[#04AA71]">Kelly.dev</h1>
+        <ul class="hidden md:flex gap-8 text-[#0C503E] font-medium">
+          <li><a href="#home" class="hover:text-[#04AA71] transition-colors">Home</a></li>
+          <li><a href="#projects" class="hover:text-[#04AA71] transition-colors">Projects</a></li>
+          <li><a href="#skills" class="hover:text-[#04AA71] transition-colors">Skills</a></li>
+          <li><a href="#about" class="hover:text-[#04AA71] transition-colors">About</a></li>
+          <li><a href="#contact" class="hover:text-[#04AA71] transition-colors">Contact</a></li>
+        </ul>
+        <button
+          id="menu-btn"
+          class="md:hidden text-[#0C503E] focus:outline-none text-2xl"
+        >
+          ☰
+        </button>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+        <ul class="flex flex-col items-center py-4 space-y-3">
+          <li><a href="#home" class="hover:text-[#04AA71] transition-colors">Home</a></li>
+          <li><a href="#projects" class="hover:text-[#04AA71] transition-colors">Projects</a></li>
+          <li><a href="#skills" class="hover:text-[#04AA71] transition-colors">Skills</a></li>
+          <li><a href="#about" class="hover:text-[#04AA71] transition-colors">About</a></li>
+          <li><a href="#contact" class="hover:text-[#04AA71] transition-colors">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="min-h-screen flex flex-col md:flex-row items-center justify-center gap-10 px-6 md:px-16 bg-[#E6F7F1] pt-24"
+    >
+      <!-- Left Text -->
+      <div class="text-center md:text-left max-w-2xl">
+        <h2 class="text-3xl md:text-5xl font-bold leading-tight">
+          Hi, I'm <span class="text-[#04AA71]">Akinlade (Kelly) Eveshoyan</span>
+        </h2>
+        <p class="mt-4 text-lg md:text-xl text-[#0C503E]/80">
+          Frontend Developer & UI/UX Learner passionate about creating clean,
+          responsive, and engaging web experiences.
+        </p>
+        <div class="mt-6 flex flex-wrap justify-center md:justify-start gap-4">
+          <a
+            href="#projects"
+            class="bg-[#04AA71] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0C503E] transition"
+            >View My Work</a
+          >
+          <a
+            href="Akinlade_Eveshoyan_CV_Updated.pdf" target="_blank"
+            download
+            class="border border-[#04AA71] text-[#04AA71] px-6 py-3 rounded-lg font-medium hover:bg-[#04AA71] hover:text-white transition"
+            >Download CV</a
+          >
+          <a
+            href="#contact"
+            class="bg-[#0C503E] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#04AA71] transition"
+            >Contact Me</a
+          >
+        </div>
+        <div class="mt-8 flex justify-center md:justify-start gap-4">
+          <a href="https://github.com/eveshoyanofficial" class="text-[#0C503E] hover:text-[#04AA71] text-2xl transition-colors"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/eveshoyan-akinlade/" class="text-[#0C503E] hover:text-[#04AA71] text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
+          <a href="https://x.com/eveshoyan?s=21" class="text-[#0C503E] hover:text-[#04AA71] text-2xl transition-colors"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="w-56 h-56 md:w-80 md:h-80 rounded-full overflow-hidden shadow-lg floating-animation">
+        <img
+          src="eveshoyan.jpg"
+          alt="Akinlade Eveshoyan"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 px-6 md:px-16 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4">My Projects</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Here are some of my recent projects that showcase my skills in frontend development and UI/UX design.</p>
+        
+        <!-- Project Filters -->
+        <div class="project-filter flex flex-wrap justify-center gap-4 mb-12">
+          <button class="filter-btn active px-4 py-2 rounded-lg border border-[#04AA71] text-[#04AA71] hover:bg-[#04AA71] hover:text-white transition" data-filter="all">All</button>
+          <button class="filter-btn px-4 py-2 rounded-lg border border-[#04AA71] text-[#04AA71] hover:bg-[#04AA71] hover:text-white transition" data-filter="web">Web Apps</button>
+          <button class="filter-btn px-4 py-2 rounded-lg border border-[#04AA71] text-[#04AA71] hover:bg-[#04AA71] hover:text-white transition" data-filter="game">Games</button>
+          <button class="filter-btn px-4 py-2 rounded-lg border border-[#04AA71] text-[#04AA71] hover:bg-[#04AA71] hover:text-white transition" data-filter="ui">UI/UX</button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project 1 -->
+          <div class="project-item bg-white rounded-lg shadow-md overflow-hidden card-hover" data-category="web">
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="E-Commerce Website" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+              <div class="absolute top-4 right-4 bg-[#04AA71] text-white px-3 py-1 rounded-full text-sm">Web App</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">E-Commerce Website</h3>
+              <p class="text-gray-600 mb-4">A fully responsive e-commerce platform with shopping cart and payment integration.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">HTML</span>
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">CSS</span>
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">JavaScript</span>
+              </div>
+              <div class="flex gap-4">
+                <a href="https://chicken-republic-one.vercel.app/" class="text-[#04AA71] hover:text-[#0C503E] font-medium transition-colors">
+                  <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                </a>
+                <a href="https://github.com/eveshoyanofficial/chicken-republic/tree/main" class="text-[#04AA71] hover:text-[#0C503E] font-medium transition-colors">
+                  <i class="fab fa-github mr-1"></i> Source Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 2 - Color Guessing Game -->
+          <div class="project-item bg-white rounded-lg shadow-md overflow-hidden card-hover" data-category="game">
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Color Guessing Game" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+              <div class="absolute top-4 right-4 bg-[#04AA71] text-white px-3 py-1 rounded-full text-sm">Game</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Color Guessing Game</h3>
+              <p class="text-gray-600 mb-4">An interactive game where players test their color recognition skills by matching RGB values to colored boxes.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">HTML</span>
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">CSS</span>
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">JavaScript</span>
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">DOM Manipulation</span>
+              </div>
+              <div class="flex gap-4">
+                <a href="https://color-guessing-game-three-kohl.vercel.app/" class="text-[#04AA71] hover:text-[#0C503E] font-medium transition-colors">
+                  <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                </a>
+                <a href="https://github.com/eveshoyanofficial/color-guessing-game" class="text-[#04AA71] hover:text-[#0C503E] font-medium transition-colors">
+                  <i class="fab fa-github mr-1"></i> Source Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 3 -->
+          <div class="project-item bg-white rounded-lg shadow-md overflow-hidden card-hover" data-category="web">
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1715&q=80" alt="Analytics Dashboard" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+              <div class="absolute top-4 right-4 bg-[#04AA71] text-white px-3 py-1 rounded-full text-sm">Web App</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">Analytics Dashboard</h3>
+              <p class="text-gray-600 mb-4">A data visualization dashboard with interactive charts and real-time updates.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">Vue.js</span>
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">D3.js</span>
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">Node.js</span>
+              </div>
+              <div class="flex gap-4">
+                <a href="#" class="text-[#04AA71] hover:text-[#0C503E] font-medium transition-colors">
+                  <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+                </a>
+                <a href="#" class="text-[#04AA71] hover:text-[#0C503E] font-medium transition-colors">
+                  <i class="fab fa-github mr-1"></i> Source Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Project 4 -->
+          <div class="project-item bg-white rounded-lg shadow-md overflow-hidden card-hover" data-category="ui">
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="UI Design System" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-105">
+              <div class="absolute top-4 right-4 bg-[#04AA71] text-white px-3 py-1 rounded-full text-sm">UI/UX</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">UI Design System</h3>
+              <p class="text-gray-600 mb-4">A comprehensive design system with reusable components and design guidelines.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">Figma</span>
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">Design System</span>
+                <span class="bg-[#E6F7F1] text-[#0C503E] px-3 py-1 rounded-full text-sm">UI/UX</span>
+              </div>
+              <div class="flex gap-4">
+                <a href="#" class="text-[#04AA71] hover:text-[#0C503E] font-medium transition-colors">
+                  <i class="fas fa-external-link-alt mr-1"></i> View Design
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-12">
+          <a href="#" class="inline-flex items-center text-[#04AA71] hover:text-[#0C503E] font-medium transition-colors">
+            View All Projects <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 px-6 md:px-16 bg-[#E6F7F1]">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4">My Skills</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">I continuously learn and adapt to new technologies to stay at the forefront of web development.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Technical Skills -->
+          <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center">
+              <i class="fas fa-code text-[#04AA71] mr-2"></i> Technical Skills
+            </h3>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>HTML/CSS</span>
+                  <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>JavaScript</span>
+                  <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>React</span>
+                  <span>80%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="80"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span>UI/UX Design</span>
+                  <span>75%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="75"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tools & Technologies -->
+          <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center">
+              <i class="fas fa-tools text-[#04AA71] mr-2"></i> Tools & Technologies
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                <i class="fab fa-git-alt text-[#04AA71] text-xl"></i>
+                <span>Git</span>
+              </div>
+              <div class="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                <i class="fab fa-figma text-[#04AA71] text-xl"></i>
+                <span>Figma</span>
+              </div>
+              <div class="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                <i class="fab fa-npm text-[#04AA71] text-xl"></i>
+                <span>npm</span>
+              </div>
+              <div class="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                <i class="fab fa-sass text-[#04AA71] text-xl"></i>
+                <span>Sass</span>
+              </div>
+              <div class="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                <i class="fab fa-bootstrap text-[#04AA71] text-xl"></i>
+                <span>Bootstrap</span>
+              </div>
+              <div class="flex items-center gap-2 p-3 bg-white rounded-lg shadow-sm">
+                <i class="fab fa-react text-[#04AA71] text-xl"></i>
+                <span>React</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-6 md:px-16 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4">About Me</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Learn more about my journey, experience, and what drives me as a developer.</p>
+        
+        <div class="flex flex-col md:flex-row gap-12 items-center">
+          <div class="md:w-1/2">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="About Me" class="rounded-lg shadow-md">
+          </div>
+          <div class="md:w-1/2">
+            <h3 class="text-xl font-bold mb-4">My Journey</h3>
+            <p class="mb-4">I'm a passionate frontend developer with a keen eye for design and user experience. I enjoy turning complex problems into simple, beautiful, and intuitive designs.</p>
+            <p class="mb-4">When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through blog posts and tutorials.</p>
+            <p class="mb-6">I'm always eager to take on new challenges and collaborate on exciting projects. Let's create something amazing together!</p>
+            
+            <div class="flex flex-wrap gap-4 mb-8">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-graduation-cap text-[#04AA71]"></i>
+                <span>B.eng. Information and Communication Engineering</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-briefcase text-[#04AA71]"></i>
+                <span>1+ Years Experience</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-project-diagram text-[#04AA71]"></i>
+                <span>10+ Projects Completed</span>
+              </div>
+            </div>
+            
+            <a href="#contact" class="bg-[#04AA71] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0C503E] transition inline-flex items-center">
+              Get In Touch <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-6 md:px-16 bg-[#E6F7F1]">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-4">Get In Touch</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+            <i class="fas fa-envelope text-[#04AA71] text-2xl mb-4"></i>
+            <h3 class="font-bold mb-2">Email</h3>
+            <p class="text-gray-600">akinlade.eveshoyan@gmail.com</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+            <i class="fas fa-phone text-[#04AA71] text-2xl mb-4"></i>
+            <h3 class="font-bold mb-2">Phone</h3>
+            <p class="text-gray-600">+234 708 203 4847</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+            <i class="fas fa-map-marker-alt text-[#04AA71] text-2xl mb-4"></i>
+            <h3 class="font-bold mb-2">Location</h3>
+            <p class="text-gray-600">Lagos, Nigeria</p>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-md p-8">
+          <form id="contact-form">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label for="name" class="block mb-2 font-medium">Your Name</label>
+                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04AA71]" required>
+              </div>
+              <div>
+                <label for="email" class="block mb-2 font-medium">Your Email</label>
+                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04AA71]" required>
+              </div>
+            </div>
+            <div class="mb-6">
+              <label for="subject" class="block mb-2 font-medium">Subject</label>
+              <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04AA71]" required>
+            </div>
+            <div class="mb-6">
+              <label for="message" class="block mb-2 font-medium">Message</label>
+              <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#04AA71]" required></textarea>
+            </div>
+            <button type="submit" class="bg-[#04AA71] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0C503E] transition w-full flex items-center justify-center">
+              <i class="fas fa-paper-plane mr-2"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0C503E] text-white py-8">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <h2 class="text-2xl font-bold text-[#04AA71]">Kelly.dev</h2>
+            <p class="mt-2">Creating beautiful and functional web experiences</p>
+          </div>
+          <div class="flex gap-4">
+            <a href="https://github.com/eveshoyanofficial" class="text-white hover:text-[#04AA71] text-xl transition-colors"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/eveshoyan-akinlade/" class="text-white hover:text-[#04AA71] text-xl transition-colors"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/eveshoyan?s=21" class="text-white hover:text-[#04AA71] text-xl transition-colors"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white hover:text-[#04AA71] text-xl transition-colors"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="border-t border-gray-600 mt-8 pt-6 text-center">
+          <p>© 2025 Akinlade Eveshoyan. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-[#04AA71] text-white p-3 rounded-full shadow-lg hover:bg-[#0C503E] transition hidden">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JS for Mobile Menu -->
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const backToTopBtn = document.getElementById("back-to-top");
+      
+      // Mobile menu toggle
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+      
+      // Close mobile menu when a link is clicked
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      mobileLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+      
+      // Back to top button
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.classList.remove('hidden');
+        } else {
+          backToTopBtn.classList.add('hidden');
+        }
+      });
+      
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      
+      // Animate skill bars when they come into view
+      const observerOptions = {
+        threshold: 0.5
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const skillBars = entry.target.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+              const width = bar.getAttribute('data-width');
+              bar.style.width = `${width}%`;
+            });
+          }
+        });
+      }, observerOptions);
+      
+      const skillsSection = document.getElementById('skills');
+      observer.observe(skillsSection);
+      
+      // Form submission
+      const contactForm = document.getElementById('contact-form');
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you for your message! I will get back to you soon.');
+        contactForm.reset();
+      });
+      
+      // Project filtering
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const projectItems = document.querySelectorAll('.project-item');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          button.classList.add('active');
+          
+          const filterValue = button.getAttribute('data-filter');
+          
+          projectItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
